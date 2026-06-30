@@ -142,7 +142,7 @@ canvas{width:100%;height:100%;display:block;border-radius:14px;background:var(--
 /* ===================== BUIU COMILÃO (trash edition) ===================== */
 const cv = document.getElementById('board');
 const ctx = cv.getContext('2d');
-const N = 19;
+const N = 12;
 let cell = 20;
 const FACE='data:image/jpeg;base64,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';
 const faceImg=new Image(); let faceReady=false;
@@ -162,12 +162,15 @@ const BEST_KEY = 'buiu-comilao-recorde';
 let best = carregarRecorde();
 bestEl.textContent = best;
 
-let buiu, dir, nextDir, folha, score, estado, passo, acumulado, ultimo, comeuPop;
+let buiu, buiuPrev, interp, headAng, dir, nextDir, folha, score, estado, passo, acumulado, ultimo, comeuPop;
 
 function reset(){
   const meio = Math.floor(N/2);
   buiu = [{x:meio-1,y:meio},{x:meio-2,y:meio},{x:meio-3,y:meio}];
+  buiuPrev = buiu.map(s=>({x:s.x,y:s.y}));
+  interp = 0;
   dir = {x:1,y:0}; nextDir = {x:1,y:0};
+  headAng = Math.atan2(dir.y,dir.x) + Math.PI/2;
   score = 0; passo = 145; acumulado = 0; comeuPop = 0;
   scoreEl.textContent = '0';
   porFolha();
@@ -185,7 +188,14 @@ function loop(t){
   if(!ultimo) ultimo = t;
   const dt = t - ultimo;
   acumulado += dt; ultimo = t;
-  while(acumulado >= passo){ avancar(); acumulado -= passo; }
+  while(acumulado >= passo){
+    buiuPrev = buiu.map(s=>({x:s.x,y:s.y}));
+    avancar();
+    acumulado -= passo;
+  }
+  interp = passo>0 ? Math.min(1, acumulado/passo) : 0;
+  const alvo = Math.atan2(dir.y,dir.x) + Math.PI/2;
+  headAng = angLerp(headAng, alvo, Math.min(1, dt*0.02));
   if(comeuPop>0) comeuPop = Math.max(0, comeuPop - dt*0.0048);
   desenhar();
   requestAnimationFrame(loop);
@@ -230,47 +240,81 @@ function desenhar(){
   desenhaFolha(folha.x*cell+cell/2, folha.y*cell+cell/2, cell*0.52, agora);
   ctx.restore();
 
-  // geleia neon (glow + tremor)
+  // geleia neon: corpo contínuo (tubo) com posição interpolada e tremor
+  const pts = buiu.map((_,i)=>{
+    const c = segCenter(i);
+    const tr = Math.sin(agora/160 + i*0.6)*cell*0.03;
+    return {x:c.x+tr, y:c.y+tr};
+  });
+
   ctx.save();
+  ctx.lineJoin = 'round'; ctx.lineCap = 'round';
   ctx.shadowColor = '#ff8c00'; ctx.shadowBlur = cell*0.55;
-  for(let i=buiu.length-1;i>=0;i--){
-    const s = buiu[i];
-    const t = 1 - i/Math.max(1,buiu.length);
-    const cor = mix(getCss('--jelly-2'), getCss('--jelly-1'), t);
-    const tremor = Math.sin(agora/160 + i*0.6)*cell*0.035;
-    let m = cell*0.10 + tremor;
-    if(i===0 && comeuPop>0) m -= cell*0.06*comeuPop;
-    const x=s.x*cell+m, y=s.y*cell+m, w=cell-2*m, h=cell-2*m, r=cell*0.36;
-    roundRect(x,y,w,h,r,cor);
-    if(i===0 && faceReady){
-      ctx.save(); ctx.shadowBlur=0;
-      const fx=x+w*0.09, fy=y+h*0.09, fw=w*0.82, fh=h*0.82;
-      roundRectPath(fx,fy,fw,fh,r*0.7); ctx.clip();
-      ctx.drawImage(faceImg, fx, fy, fw, fh);
-      ctx.restore();
-    } else {
-      ctx.shadowBlur=0;
-      ctx.globalAlpha=0.55; ctx.fillStyle='#ffffff';
-      ctx.beginPath(); ctx.ellipse(x+w*0.32,y+h*0.28,w*0.22,h*0.14,-0.5,0,Math.PI*2); ctx.fill();
-      ctx.globalAlpha=1;
-    }
-    ctx.shadowBlur=cell*0.5;
+  ctx.lineWidth = cell*0.84;
+  if(pts.length>=2){
+    const g = ctx.createLinearGradient(pts[0].x,pts[0].y,pts[pts.length-1].x,pts[pts.length-1].y);
+    g.addColorStop(0, getCss('--jelly-1'));
+    g.addColorStop(1, getCss('--jelly-2'));
+    ctx.strokeStyle = g;
+  } else {
+    ctx.strokeStyle = getCss('--jelly-1');
   }
+  // traça uma curva suave passando pelos pontos médios (corpo fluido)
+  ctx.beginPath();
+  ctx.moveTo(pts[0].x, pts[0].y);
+  if(pts.length === 1){
+    ctx.lineTo(pts[0].x+0.01, pts[0].y);
+  } else {
+    for(let i=1;i<pts.length-1;i++){
+      const mx=(pts[i].x+pts[i+1].x)/2, my=(pts[i].y+pts[i+1].y)/2;
+      ctx.quadraticCurveTo(pts[i].x, pts[i].y, mx, my);
+    }
+    ctx.lineTo(pts[pts.length-1].x, pts[pts.length-1].y);
+  }
+  ctx.stroke();
+  // brilho de geleia por cima (mesmo traçado, mais fino e claro)
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+  ctx.lineWidth = cell*0.30;
+  ctx.stroke();
   ctx.restore();
 
-  // olhos do Buiu
-  const head = buiu[0];
-  const cx = head.x*cell + cell/2, cy = head.y*cell + cell/2;
-  const off = cell*0.16, eye = cell*0.1, fwd = cell*0.12;
-  const ox = dir.x*fwd, oy = dir.y*fwd;
-  if(!faceReady){
+  // cabeça do Buiu, orientada conforme a direção
+  const h = pts[0];
+  const hs = cell*0.96 * (1 + 0.12*comeuPop);
+  ctx.save();
+  ctx.translate(h.x, h.y);
+  ctx.rotate(headAng);
+  ctx.shadowColor = '#ff8c00'; ctx.shadowBlur = cell*0.5;
+  roundRectPath(-hs/2,-hs/2,hs,hs,hs*0.32);
+  ctx.fillStyle = getCss('--jelly-1'); ctx.fill();
+  ctx.shadowBlur = 0;
+  if(faceReady){
+    ctx.save();
+    roundRectPath(-hs/2,-hs/2,hs,hs,hs*0.32); ctx.clip();
+    ctx.drawImage(faceImg, -hs/2, -hs/2, hs, hs);
+    ctx.restore();
+  } else {
+    // olhos olhando "pra frente" (topo local) quando não há foto
     ctx.fillStyle = '#06210d';
-    const e1 = perp(off), e2 = perp(-off);
-    ctx.beginPath(); ctx.arc(cx+ox+e1.x, cy+oy+e1.y, eye, 0, Math.PI*2); ctx.fill();
-    ctx.beginPath(); ctx.arc(cx+ox+e2.x, cy+oy+e2.y, eye, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(-hs*0.18, -hs*0.12, hs*0.10, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc( hs*0.18, -hs*0.12, hs*0.10, 0, Math.PI*2); ctx.fill();
   }
+  ctx.restore();
 }
-function perp(d){ return dir.x!==0 ? {x:0,y:d} : {x:d,y:0}; }
+/* centro do segmento i em pixels, interpolado entre passos para movimento fluido */
+function segCenter(i){
+  const cur = buiu[i];
+  const prev = buiuPrev[i] || buiuPrev[buiuPrev.length-1] || cur;
+  const gx = prev.x + (cur.x - prev.x)*interp;
+  const gy = prev.y + (cur.y - prev.y)*interp;
+  return {x: gx*cell + cell/2, y: gy*cell + cell/2};
+}
+/* interpolação angular pelo caminho mais curto */
+function angLerp(a,b,t){
+  const d = Math.atan2(Math.sin(b-a), Math.cos(b-a));
+  return a + d*t;
+}
 
 function desenhaFolha(cx, cy, size, agora){
   const balanco = Math.sin(agora/300)*0.18;
@@ -317,18 +361,11 @@ function roundRectPath(x,y,w,h,r){
   ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r);
   ctx.closePath();
 }
-function roundRect(x,y,w,h,r,fill){ ctx.fillStyle=fill; roundRectPath(x,y,w,h,r); ctx.fill(); }
 const cssCache = {};
 function getCss(v){
   return (v in cssCache) ? cssCache[v]
     : (cssCache[v] = getComputedStyle(document.documentElement).getPropertyValue(v).trim());
 }
-function mix(a,b,t){
-  const ca=hex(a), cb=hex(b);
-  const r=Math.round(ca[0]+(cb[0]-ca[0])*t), g=Math.round(ca[1]+(cb[1]-ca[1])*t), bl=Math.round(ca[2]+(cb[2]-ca[2])*t);
-  return 'rgb('+r+','+g+','+bl+')';
-}
-function hex(h){ h=h.replace('#',''); if(h.length===3) h=h.split('').map(c=>c+c).join(''); return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]; }
 
 /* ---------- Controles ---------- */
 function setDir(nx,ny){
